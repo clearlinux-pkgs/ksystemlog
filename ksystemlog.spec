@@ -5,18 +5,18 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ksystemlog
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/ksystemlog-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/ksystemlog-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/ksystemlog-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/ksystemlog-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/ksystemlog-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/ksystemlog-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: ksystemlog-bin
-Requires: ksystemlog-data
-Requires: ksystemlog-license
-Requires: ksystemlog-locales
+Requires: ksystemlog-bin = %{version}-%{release}
+Requires: ksystemlog-data = %{version}-%{release}
+Requires: ksystemlog-license = %{version}-%{release}
+Requires: ksystemlog-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : pkg-config
@@ -28,8 +28,8 @@ No detailed description available
 %package bin
 Summary: bin components for the ksystemlog package.
 Group: Binaries
-Requires: ksystemlog-data
-Requires: ksystemlog-license
+Requires: ksystemlog-data = %{version}-%{release}
+Requires: ksystemlog-license = %{version}-%{release}
 
 %description bin
 bin components for the ksystemlog package.
@@ -68,25 +68,25 @@ locales components for the ksystemlog package.
 
 
 %prep
-%setup -q -n ksystemlog-18.08.0
+%setup -q -n ksystemlog-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535201882
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549874840
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535201882
+export SOURCE_DATE_EPOCH=1549874840
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/ksystemlog
-cp COPYING %{buildroot}/usr/share/doc/ksystemlog/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/ksystemlog
+cp COPYING %{buildroot}/usr/share/package-licenses/ksystemlog/COPYING
 pushd clr-build
 %make_install
 popd
@@ -110,7 +110,6 @@ popd
 /usr/share/doc/HTML/ca/ksystemlog/first-opening.png
 /usr/share/doc/HTML/ca/ksystemlog/index.cache.bz2
 /usr/share/doc/HTML/ca/ksystemlog/index.docbook
-/usr/share/doc/HTML/ca/ksystemlog/main-screen.png
 /usr/share/doc/HTML/de/ksystemlog/filter-process.png
 /usr/share/doc/HTML/de/ksystemlog/first-opening.png
 /usr/share/doc/HTML/de/ksystemlog/index.cache.bz2
@@ -150,8 +149,8 @@ popd
 /usr/share/doc/HTML/uk/ksystemlog/main-screen.png
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/ksystemlog/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/ksystemlog/COPYING
 
 %files locales -f ksystemlog.lang
 %defattr(-,root,root,-)
