@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ksystemlog
-Version  : 19.04.3
-Release  : 10
-URL      : https://download.kde.org/stable/applications/19.04.3/src/ksystemlog-19.04.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.3/src/ksystemlog-19.04.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.3/src/ksystemlog-19.04.3.tar.xz.sig
+Version  : 19.08.0
+Release  : 11
+URL      : https://download.kde.org/stable/applications/19.08.0/src/ksystemlog-19.08.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.0/src/ksystemlog-19.08.0.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.0/src/ksystemlog-19.08.0.tar.xz.sig
 Summary  : System log viewer tool
 Group    : Development/Tools
 License  : GPL-2.0
@@ -68,16 +68,17 @@ locales components for the ksystemlog package.
 
 
 %prep
-%setup -q -n ksystemlog-19.04.3
+%setup -q -n ksystemlog-19.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562881543
+export SOURCE_DATE_EPOCH=1565908961
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -91,7 +92,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1562881543
+export SOURCE_DATE_EPOCH=1565908961
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksystemlog
 cp COPYING %{buildroot}/usr/share/package-licenses/ksystemlog/COPYING
@@ -111,6 +112,7 @@ popd
 %defattr(-,root,root,-)
 /usr/share/applications/org.kde.ksystemlog.desktop
 /usr/share/kxmlgui5/ksystemlog/ksystemlogui.rc
+/usr/share/metainfo/org.kde.ksystemlog.appdata.xml
 
 %files doc
 %defattr(0644,root,root,0755)
