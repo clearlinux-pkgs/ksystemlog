@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ksystemlog
-Version  : 19.08.3
-Release  : 14
-URL      : https://download.kde.org/stable/applications/19.08.3/src/ksystemlog-19.08.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.3/src/ksystemlog-19.08.3.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.3/src/ksystemlog-19.08.3.tar.xz.sig
+Version  : 19.12.0
+Release  : 15
+URL      : https://download.kde.org/stable/release-service/19.12.0/src/ksystemlog-19.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.0/src/ksystemlog-19.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.0/src/ksystemlog-19.12.0.tar.xz.sig
 Summary  : System log viewer tool
 Group    : Development/Tools
 License  : GPL-2.0
@@ -68,14 +68,15 @@ locales components for the ksystemlog package.
 
 
 %prep
-%setup -q -n ksystemlog-19.08.3
+%setup -q -n ksystemlog-19.12.0
+cd %{_builddir}/ksystemlog-19.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573187589
+export SOURCE_DATE_EPOCH=1576565506
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -92,10 +93,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1573187589
+export SOURCE_DATE_EPOCH=1576565506
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksystemlog
-cp %{_builddir}/ksystemlog-19.08.3/COPYING %{buildroot}/usr/share/package-licenses/ksystemlog/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
+cp %{_builddir}/ksystemlog-19.12.0/COPYING %{buildroot}/usr/share/package-licenses/ksystemlog/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
 pushd clr-build
 %make_install
 popd
