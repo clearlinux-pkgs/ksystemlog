@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ksystemlog
-Version  : 20.12.3
-Release  : 27
-URL      : https://download.kde.org/stable/release-service/20.12.3/src/ksystemlog-20.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.12.3/src/ksystemlog-20.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.12.3/src/ksystemlog-20.12.3.tar.xz.sig
+Version  : 21.04.0
+Release  : 28
+URL      : https://download.kde.org/stable/release-service/21.04.0/src/ksystemlog-21.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.04.0/src/ksystemlog-21.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.04.0/src/ksystemlog-21.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0
+License  : BSD-3-Clause GPL-2.0
 Requires: ksystemlog-bin = %{version}-%{release}
 Requires: ksystemlog-data = %{version}-%{release}
 Requires: ksystemlog-license = %{version}-%{release}
@@ -21,6 +21,7 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : ki18n-dev
 BuildRequires : pkg-config
+BuildRequires : pkgconfig(audit)
 BuildRequires : pkgconfig(systemd)
 
 %description
@@ -69,15 +70,15 @@ locales components for the ksystemlog package.
 
 
 %prep
-%setup -q -n ksystemlog-20.12.3
-cd %{_builddir}/ksystemlog-20.12.3
+%setup -q -n ksystemlog-21.04.0
+cd %{_builddir}/ksystemlog-21.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618693502
+export SOURCE_DATE_EPOCH=1619224356
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -93,10 +94,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618693502
+export SOURCE_DATE_EPOCH=1619224356
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksystemlog
-cp %{_builddir}/ksystemlog-20.12.3/COPYING %{buildroot}/usr/share/package-licenses/ksystemlog/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
+cp %{_builddir}/ksystemlog-21.04.0/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/ksystemlog/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/ksystemlog-21.04.0/COPYING %{buildroot}/usr/share/package-licenses/ksystemlog/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
 pushd clr-build
 %make_install
 popd
@@ -114,6 +116,7 @@ popd
 /usr/share/applications/org.kde.ksystemlog.desktop
 /usr/share/kxmlgui5/ksystemlog/ksystemlogui.rc
 /usr/share/metainfo/org.kde.ksystemlog.appdata.xml
+/usr/share/qlogging-categories5/ksystemlog.categories
 
 %files doc
 %defattr(0644,root,root,0755)
@@ -151,8 +154,6 @@ popd
 /usr/share/doc/HTML/pt_BR/ksystemlog/index.cache.bz2
 /usr/share/doc/HTML/pt_BR/ksystemlog/index.docbook
 /usr/share/doc/HTML/pt_BR/ksystemlog/main-screen.png
-/usr/share/doc/HTML/ru/ksystemlog/index.cache.bz2
-/usr/share/doc/HTML/ru/ksystemlog/index.docbook
 /usr/share/doc/HTML/sv/ksystemlog/index.cache.bz2
 /usr/share/doc/HTML/sv/ksystemlog/index.docbook
 /usr/share/doc/HTML/uk/ksystemlog/filter-process.png
@@ -165,6 +166,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
+/usr/share/package-licenses/ksystemlog/29fb05b49e12a380545499938c4879440bd8851e
 /usr/share/package-licenses/ksystemlog/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
 
 %files locales -f ksystemlog.lang
