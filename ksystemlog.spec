@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ksystemlog
-Version  : 21.08.1
-Release  : 30
-URL      : https://download.kde.org/stable/release-service/21.08.1/src/ksystemlog-21.08.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.08.1/src/ksystemlog-21.08.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.08.1/src/ksystemlog-21.08.1.tar.xz.sig
+Version  : 21.08.2
+Release  : 31
+URL      : https://download.kde.org/stable/release-service/21.08.2/src/ksystemlog-21.08.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.2/src/ksystemlog-21.08.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.2/src/ksystemlog-21.08.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0
@@ -70,15 +70,15 @@ locales components for the ksystemlog package.
 
 
 %prep
-%setup -q -n ksystemlog-21.08.1
-cd %{_builddir}/ksystemlog-21.08.1
+%setup -q -n ksystemlog-21.08.2
+cd %{_builddir}/ksystemlog-21.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1630956989
+export SOURCE_DATE_EPOCH=1634337142
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -94,11 +94,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1630956989
+export SOURCE_DATE_EPOCH=1634337142
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksystemlog
-cp %{_builddir}/ksystemlog-21.08.1/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/ksystemlog/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/ksystemlog-21.08.1/COPYING %{buildroot}/usr/share/package-licenses/ksystemlog/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
+cp %{_builddir}/ksystemlog-21.08.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/ksystemlog/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/ksystemlog-21.08.2/COPYING %{buildroot}/usr/share/package-licenses/ksystemlog/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
 pushd clr-build
 %make_install
 popd
