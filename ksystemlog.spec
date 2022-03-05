@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ksystemlog
-Version  : 21.12.2
-Release  : 36
-URL      : https://download.kde.org/stable/release-service/21.12.2/src/ksystemlog-21.12.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.12.2/src/ksystemlog-21.12.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.12.2/src/ksystemlog-21.12.2.tar.xz.sig
+Version  : 21.12.3
+Release  : 37
+URL      : https://download.kde.org/stable/release-service/21.12.3/src/ksystemlog-21.12.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.12.3/src/ksystemlog-21.12.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.12.3/src/ksystemlog-21.12.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0
@@ -70,15 +70,15 @@ locales components for the ksystemlog package.
 
 
 %prep
-%setup -q -n ksystemlog-21.12.2
-cd %{_builddir}/ksystemlog-21.12.2
+%setup -q -n ksystemlog-21.12.3
+cd %{_builddir}/ksystemlog-21.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1644001544
+export SOURCE_DATE_EPOCH=1646523727
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -94,13 +94,13 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1644001544
+export SOURCE_DATE_EPOCH=1646523727
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksystemlog
-cp %{_builddir}/ksystemlog-21.12.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/ksystemlog/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/ksystemlog-21.12.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/ksystemlog/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe
-cp %{_builddir}/ksystemlog-21.12.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/ksystemlog/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/ksystemlog-21.12.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ksystemlog/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/ksystemlog-21.12.3/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/ksystemlog/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/ksystemlog-21.12.3/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/ksystemlog/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe
+cp %{_builddir}/ksystemlog-21.12.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/ksystemlog/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/ksystemlog-21.12.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ksystemlog/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 pushd clr-build
 %make_install
 popd
